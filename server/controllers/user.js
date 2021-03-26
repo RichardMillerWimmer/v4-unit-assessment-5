@@ -48,6 +48,7 @@ module.exports = {
             return res.status(400).send('incorrect password');
         }
 
+        req.session.user = { username: user.username, id: user.id };
         return res.status(200).send(req.session.user);
 
     },

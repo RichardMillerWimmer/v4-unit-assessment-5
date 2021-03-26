@@ -4,7 +4,6 @@ CREATE TABLE helo_users (
   password VARCHAR(200) NOT NULL,
   profile_pic text
 );
-
 CREATE TABLE helo_posts (
   id SERIAL PRIMARY KEY,
   title VARCHAR(45) NOT NULL, 
@@ -22,3 +21,7 @@ VALUES ('dummyUser', 'password', 'fakeURL');
 ALTER TABLE helo_users
 ALTER password
 SET DATA TYPE VARCHAR(1000);
+
+
+INSERT INTO helo_posts (title, content, img, author_id)
+VALUES (' test title', 'some content', 'fakeURL', 1);
