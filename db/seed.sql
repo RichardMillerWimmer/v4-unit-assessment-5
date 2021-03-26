@@ -13,3 +13,12 @@ CREATE TABLE helo_posts (
   author_id INTEGER REFERENCES helo_users(id),
   date_created TIMESTAMP
 );
+
+
+INSERT INTO helo_users (username, password, profile_pic)
+VALUES ('dummyUser', 'password', 'fakeURL');
+
+
+ALTER TABLE helo_users
+ALTER password
+SET DATA TYPE VARCHAR(1000);

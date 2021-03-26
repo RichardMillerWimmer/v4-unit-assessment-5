@@ -35,7 +35,7 @@ module.exports = {
         const { username, password } = req.body;
 
         //check is username exists
-        const existingUser = await db.user.find_user_by_username(username);
+        const existingUser = await db.user.find_user_by_username([username]);
         const user = existingUser[0]
         if (!user) {
             return res.status(400).send('username does not exist, please register a new usernam')
