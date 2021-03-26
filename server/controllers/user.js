@@ -8,8 +8,9 @@ module.exports = {
         const { username, password } = req.body;
 
         // username check
-        const user = await db.user.create_user(username);
-        if (user[0]) {
+        const result = await db.user.find_user_by_username(username);
+        const user = result[0];
+        if (user) {
             return res.status(400).send('username already registered')
         }
 
@@ -38,11 +39,11 @@ module.exports = {
         const existingUser = await db.user.find_user_by_username([username]);
         const user = existingUser[0]
         if (!user) {
-            return res.status(400).send('username does not exist, please register a new usernam')
+            return res.status(400).send('username does not exist, please register a new username')
         }
 
         // user exists, password check
-        const isAuthenticaed = bcrypt.compareSync(password, user.hash);
+        const isAuthenticaed = bcrypt.compareSync(password, user.password);
         if (!isAuthenticaed) {
             return res.status(400).send('incorrect password');
         }
@@ -56,7 +57,7 @@ module.exports = {
         res.sendStatus(200);
     },
 
-    getUser: async (eq, res, next) => {
+    getUser: async (req, res, next) => {
         if (req.session.user) {
             res.status(200).send(req.session.user)
         } else {
