@@ -22,7 +22,7 @@ class Nav extends Component {
 
   getUser() {
     axios.get('/api/auth/me')
-      .then(res => this.getUser())
+      .then(res => this.getUser(res.data))
   }
 
   logout() {
@@ -36,7 +36,7 @@ class Nav extends Component {
     return this.props.location.pathname !== '/' &&
       <div className='nav'>
         <div className='nav-profile-container'>
-          <div style={{ backgroundImage: 'url(`${this.props.profilePicture}`)' }} className='nav-profile-pic'></div>
+          <div style={{ backgroundImage: `url(${this.props.profilePicture})` }} className='nav-profile-pic'></div>
           <p>{this.props.username}</p>
         </div>
         <div className='nav-links'>

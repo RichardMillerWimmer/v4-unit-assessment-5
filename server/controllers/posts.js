@@ -40,6 +40,7 @@ module.exports = {
   createPost: (req, res) => {
     //code here
     const db = req.app.get('db');
+    // console.log(req.session.user)
     const { id } = req.session.user;
     const { title, img, content } = req.body;
     const date = new Date;

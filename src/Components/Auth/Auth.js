@@ -27,7 +27,8 @@ class Auth extends Component {
     axios.post('/api/auth/login', this.state)
       .then(res => {
         //code here
-        this.props.updateUser({ this.props.username, this.props.profilPicture })
+        const { username, profilPicture } = this.props
+        this.props.updateUser({ username, profilPicture })
         this.props.history.push('/dash')
       })
       .catch(err => {

@@ -24,6 +24,7 @@ module.exports = {
 
         // session
         req.session.user = newUser[0];
+        // console.log(req.session.user)
 
         //response
         res.status(200).send(req.session.user);
@@ -49,6 +50,7 @@ module.exports = {
         }
 
         req.session.user = { username: user.username, id: user.id };
+        console.log(req.session.user);
         return res.status(200).send(req.session.user);
 
     },
