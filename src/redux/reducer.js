@@ -1,16 +1,17 @@
 const initialState = {
-    username: 'test name',
-    profilePicture: '`https://robohash.org/richard.png`'
+    username: 'initailState',
+    profilePicture: ''
 };
 
 
 const UPDATE_USER = 'UPDATE_USER';
 const LOGOUT = 'LOGOUT';
 
-export function updateUser(user) {
+export function updateUser({ user }) {
+    // console.log(user)
     return {
         type: UPDATE_USER,
-        payload: user
+        payload: { user }
     }
 };
 

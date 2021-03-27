@@ -28,9 +28,10 @@ class Auth extends Component {
       .then(res => {
         //code here
         // console.log(res.data)
+        const { username, profilePicture } = res.data
 
         this.props.history.push('/dash')
-        // this.props.updateUser()
+        this.props.updateUser({ username, profilePicture })
       })
       .catch(err => {
         console.log(err)
@@ -43,7 +44,7 @@ class Auth extends Component {
       .then(res => {
         //code here{
         this.props.history.push('/dash')
-        // this.props.updateUser()
+        this.props.updateUser()
       })
       .catch(err => {
         console.log(err)

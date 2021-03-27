@@ -25,3 +25,5 @@ SET DATA TYPE VARCHAR(1000);
 
 INSERT INTO helo_posts (title, content, img, author_id)
 VALUES (' test title', 'some content', 'fakeURL', 1);
+INSERT INTO helo_posts (title, content, img, author_id)
+VALUES (' fake title', 'some more content for testing', 'fakeURL', 1);
