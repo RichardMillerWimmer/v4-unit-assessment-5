@@ -36,6 +36,8 @@ module.exports = {
         const db = req.app.get('db');
         const { username, password } = req.body;
 
+        // console.log(db.user)
+
         //check is username exists
         const existingUser = await db.user.find_user_by_username([username]);
         const user = existingUser[0]
@@ -49,8 +51,12 @@ module.exports = {
             return res.status(400).send('incorrect password');
         }
 
-        req.session.user = { username: user.username, id: user.id };
+        // console.log()
+
+        req.session.user = { username: user.username, id: user.id, profilePicture: user.profile_pic };
+
         console.log(req.session.user);
+
         return res.status(200).send(req.session.user);
 
     },

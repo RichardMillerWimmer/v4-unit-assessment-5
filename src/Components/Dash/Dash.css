@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: space-between;
   margin: 10px 0;
-}
+} 
 
 .dash-search-box {
   display: flex;
@@ -38,4 +38,15 @@
 
 .dash-post-box > h3 {
   font-size: 30px;
+}
+
+@media screen and (max-width: 750px) {
+  .dash-search-box {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .dash-search-bar {
+    width: 100%;
+    margin-bottom: 5px;
+  }
 }
