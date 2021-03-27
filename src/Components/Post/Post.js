@@ -18,6 +18,7 @@ class Post extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.match.params.id)
     axios.get(`/api/post/${this.props.match.params.id}`)
       .then(res => {
         this.setState({ ...res.data, loading: false })
@@ -25,6 +26,9 @@ class Post extends Component {
   }
 
   render() {
+
+    console.log(this.state)
+
     let imgSrc = this.state.img ? this.state.img : noImage;
 
     return (

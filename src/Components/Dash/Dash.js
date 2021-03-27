@@ -64,9 +64,11 @@ class Dash extends Component {
   render() {
     let { loading, search, posts, myPosts, oldestFirst } = this.state
 
+
     let mappedPosts = posts.map(post => {
+      // console.log(post.post_id)
       return <div className='content-box dash-post-box' key={post.post_id}>
-        <Link to='/path/:id' ><h3>{post.title}</h3></Link>
+        <Link to={`post/${post.post_id}`} ><h3>{post.title}</h3></Link>
         {
           post.author_username === this.props.username
             ?

@@ -55,7 +55,7 @@ module.exports = {
 
         req.session.user = { username: user.username, id: user.id, profilePicture: user.profile_pic };
 
-        // console.log(req.session.user);
+        console.log(req.session.user);
 
         return res.status(200).send(req.session.user);
 

@@ -23,7 +23,7 @@ class Nav extends Component {
   getUser() {
     axios.get('/api/auth/me')
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         const { username, profilePicture } = res.data;
         this.props.updateUser({ username, profilePicture })
       })
@@ -35,7 +35,7 @@ class Nav extends Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
 
     return this.props.location.pathname !== '/' &&
       <div className='nav'>
