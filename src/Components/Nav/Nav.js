@@ -5,7 +5,7 @@ import newLogo from './../../assets/new_logo.png';
 import logoutLogo from './../../assets/shut_down.png';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateUser, logout } from '../../redux/reducer';
+import { updateUser, logoutUser } from '../../redux/reducer';
 import './Nav.css';
 
 class Nav extends Component {
@@ -21,17 +21,19 @@ class Nav extends Component {
   }
 
   getUser() {
+    console.log('checking log')
     axios.get('/api/auth/me')
       .then(res => {
-        // console.log(res.data)
+        console.log(res.data)
         const { username, profilePicture } = res.data;
         this.props.updateUser({ username, profilePicture })
       })
+      .catch(err => console.log(err))
   }
 
   logout() {
     axios.post('/api/auth/logout')
-      .then(res => this.logout())
+      .then(res => this.props.logoutUser())
   }
 
   render() {
@@ -48,10 +50,11 @@ class Nav extends Component {
           <Link to='/form' ><img className='nav-img' src={newLogo} alt='new post' /></Link>
         </div>
         <Link to='/' ><img className='nav-img logout' src={logoutLogo} alt='logout' /></Link>
+        {/* <button onClick={this.getUser}>getUser</button> */}
       </div>
   }
 }
 
 const mapStateToProps = (state) => state;
 
-export default withRouter(connect(mapStateToProps, { updateUser, logout })(Nav));
+export default withRouter(connect(mapStateToProps, { updateUser, logoutUser })(Nav));

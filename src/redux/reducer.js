@@ -8,14 +8,14 @@ const UPDATE_USER = 'UPDATE_USER';
 const LOGOUT = 'LOGOUT';
 
 export function updateUser(user) {
-    // console.log(user)
+    console.log(user)
     return {
         type: UPDATE_USER,
         payload: user
     }
 };
 
-export function logout() {
+export function logoutUser() {
     return {
         type: LOGOUT
     }
@@ -23,6 +23,7 @@ export function logout() {
 
 
 export default function reducer(state = initialState, action) {
+    // console.log(action);
     switch (action.type) {
         case UPDATE_USER:
             return {
