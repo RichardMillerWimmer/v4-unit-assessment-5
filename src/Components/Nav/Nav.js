@@ -20,6 +20,10 @@ class Nav extends Component {
     this.getUser()
   }
 
+  componentDidUpdate() {
+    this.getUser()
+  }
+
   getUser() {
     console.log('checking log')
     axios.get('/api/auth/me')
